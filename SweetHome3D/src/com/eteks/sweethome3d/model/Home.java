@@ -158,7 +158,8 @@ public class Home implements Serializable, Cloneable {
         HomePieceOfFurniture.SortableProperty.WIDTH,
         HomePieceOfFurniture.SortableProperty.DEPTH,
         HomePieceOfFurniture.SortableProperty.HEIGHT,
-        HomePieceOfFurniture.SortableProperty.VISIBLE});
+        HomePieceOfFurniture.SortableProperty.VISIBLE,
+        HomePieceOfFurniture.SortableProperty.VOLUME});
     // Init transient lists and other fields
     init(true);
     addModelListeners();
@@ -321,7 +322,8 @@ public class Home implements Serializable, Cloneable {
           HomePieceOfFurniture.SortableProperty.COLOR,
           HomePieceOfFurniture.SortableProperty.MOVABLE,
           HomePieceOfFurniture.SortableProperty.DOOR_OR_WINDOW,
-          HomePieceOfFurniture.SortableProperty.VISIBLE});
+          HomePieceOfFurniture.SortableProperty.VISIBLE,
+          HomePieceOfFurniture.SortableProperty.VOLUME});
     }
     // Create a default top camera that matches default point of view 
     this.topCamera = new Camera(50, 1050, 1010, 

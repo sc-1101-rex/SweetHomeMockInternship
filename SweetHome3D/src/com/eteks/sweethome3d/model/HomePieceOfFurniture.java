@@ -51,14 +51,15 @@ public class HomePieceOfFurniture extends HomeObject implements PieceOfFurniture
    * to a piece of furniture will be notified under a property name equal to the string value of one these properties.
    */
   public enum Property {NAME, NAME_VISIBLE, NAME_X_OFFSET, NAME_Y_OFFSET, NAME_STYLE, NAME_ANGLE,
-      DESCRIPTION, PRICE, WIDTH, DEPTH, HEIGHT, COLOR, TEXTURE, MODEL_MATERIALS, SHININESS, VISIBLE, X, Y, ELEVATION, ANGLE, MODEL_MIRRORED, MOVABLE, LEVEL};
+      DESCRIPTION, PRICE, WIDTH, DEPTH, HEIGHT, COLOR, TEXTURE, MODEL_MATERIALS, SHININESS, VISIBLE, X, Y, ELEVATION, ANGLE, MODEL_MIRRORED, MOVABLE, LEVEL, VOLUME};
   
   /** 
    * The properties on which home furniture may be sorted.  
    */
   public enum SortableProperty {CATALOG_ID, NAME, WIDTH, DEPTH, HEIGHT, MOVABLE, 
                                 DOOR_OR_WINDOW, COLOR, TEXTURE, VISIBLE, X, Y, ELEVATION, ANGLE,
-                                PRICE, VALUE_ADDED_TAX, VALUE_ADDED_TAX_PERCENTAGE, PRICE_VALUE_ADDED_TAX_INCLUDED, LEVEL, VOLUME};
+                                PRICE, VALUE_ADDED_TAX, VALUE_ADDED_TAX_PERCENTAGE, PRICE_VALUE_ADDED_TAX_INCLUDED, LEVEL,
+                                VOLUME};
   private static final Map<SortableProperty, Comparator<HomePieceOfFurniture>> SORTABLE_PROPERTY_COMPARATORS;
   private static final float [][] IDENTITY = new float [][] {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
   
@@ -274,6 +275,7 @@ public class HomePieceOfFurniture extends HomeObject implements PieceOfFurniture
   private float                  angle;
   private boolean                modelMirrored;
   private Level                  level;
+  private float volume;
   
   private transient PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
   private transient Shape shapeCache;
@@ -331,6 +333,7 @@ public class HomePieceOfFurniture extends HomeObject implements PieceOfFurniture
       this.visible = true;
       this.x = this.width / 2;
       this.y = this.depth / 2;
+      this.volume = this.width * this.depth * this.height;
     }
   }
 
@@ -1221,7 +1224,7 @@ public class HomePieceOfFurniture extends HomeObject implements PieceOfFurniture
    * Returns the volume of this piece of furniture.
    */
   public float getVolume() {
-    return getWidth() * getDepth() * getHeight();
+    return this.volume;
   }
 
   /**
