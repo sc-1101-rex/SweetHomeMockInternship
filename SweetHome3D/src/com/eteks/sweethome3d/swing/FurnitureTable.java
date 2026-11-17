@@ -1157,7 +1157,9 @@ public class FurnitureTable extends JTable implements View, Printable {
         case VALUE_ADDED_TAX :
           return preferences.getLocalizedString(FurnitureTable.class, "valueAddedTaxColumn");          
         case PRICE_VALUE_ADDED_TAX_INCLUDED :
-          return preferences.getLocalizedString(FurnitureTable.class, "priceValueAddedTaxIncludedColumn");          
+          return preferences.getLocalizedString(FurnitureTable.class, "priceValueAddedTaxIncludedColumn");
+        case VOLUME :
+          return preferences.getLocalizedString(FurnitureTable.class, "volumeColumn");
         default :
           throw new IllegalArgumentException("Unknown column name " + property);
       }
@@ -1176,6 +1178,7 @@ public class FurnitureTable extends JTable implements View, Printable {
         case HEIGHT : 
         case X : 
         case Y :
+        case VOLUME :
         case ELEVATION : 
           return 50;
         case ANGLE :
@@ -1193,7 +1196,7 @@ public class FurnitureTable extends JTable implements View, Printable {
         case VALUE_ADDED_TAX_PERCENTAGE :
         case VALUE_ADDED_TAX :
         case PRICE_VALUE_ADDED_TAX_INCLUDED :
-          return 70;          
+          return 70;
         default :
           throw new IllegalArgumentException("Unknown column name " + property);
       }
@@ -1242,7 +1245,9 @@ public class FurnitureTable extends JTable implements View, Printable {
         case VALUE_ADDED_TAX :
           return getPriceRenderer(HomePieceOfFurniture.SortableProperty.VALUE_ADDED_TAX, preferences);          
         case PRICE_VALUE_ADDED_TAX_INCLUDED :
-          return getPriceRenderer(HomePieceOfFurniture.SortableProperty.PRICE_VALUE_ADDED_TAX_INCLUDED, preferences);          
+          return getPriceRenderer(HomePieceOfFurniture.SortableProperty.PRICE_VALUE_ADDED_TAX_INCLUDED, preferences);
+        case VOLUME:
+          return getSizeRenderer(HomePieceOfFurniture.SortableProperty.VOLUME, preferences);
         default :
           throw new IllegalArgumentException("Unknown column name " + property);
       }
@@ -1371,6 +1376,15 @@ public class FurnitureTable extends JTable implements View, Printable {
                     isSelected, hasFocus, row, column);
               }
             };
+        case VOLUME:
+          return new SizeRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+              return super.getTableCellRendererComponent(table,
+                      value != null  ? ((HomePieceOfFurniture)value).getVolume()  : null,
+                      isSelected, hasFocus, row, column);
+            }
+          };
         default :
           throw new IllegalArgumentException(property + " column not a size column");
       }
