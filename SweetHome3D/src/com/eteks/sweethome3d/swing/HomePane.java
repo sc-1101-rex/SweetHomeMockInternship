@@ -1326,6 +1326,8 @@ public class HomePane extends JRootPane implements HomeView {
         sortActions, HomePieceOfFurniture.SortableProperty.WIDTH);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_DEPTH, 
         sortActions, HomePieceOfFurniture.SortableProperty.DEPTH);
+    addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_VOLUME,
+            sortActions, HomePieceOfFurniture.SortableProperty.VOLUME);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_HEIGHT, 
         sortActions, HomePieceOfFurniture.SortableProperty.HEIGHT);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_X, 
@@ -1348,8 +1350,6 @@ public class HomePane extends JRootPane implements HomeView {
         sortActions, HomePieceOfFurniture.SortableProperty.DOOR_OR_WINDOW);
     addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_VISIBILITY, 
         sortActions, HomePieceOfFurniture.SortableProperty.VISIBLE);
-    addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_VOLUME,
-            sortActions, HomePieceOfFurniture.SortableProperty.VOLUME);
     // Use prices if currency isn't null
     if (preferences.getCurrency() != null) {
       addActionToMap(ActionType.SORT_HOME_FURNITURE_BY_PRICE, 
@@ -1432,6 +1432,8 @@ public class HomePane extends JRootPane implements HomeView {
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.WIDTH);
     addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_DEPTH, 
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.DEPTH);
+    addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_VOLUME,
+        displayPropertyActions, HomePieceOfFurniture.SortableProperty.VOLUME);
     addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_HEIGHT, 
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.HEIGHT);
     addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_X, 
@@ -1454,8 +1456,6 @@ public class HomePane extends JRootPane implements HomeView {
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.DOOR_OR_WINDOW);
     addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_VISIBLE, 
         displayPropertyActions, HomePieceOfFurniture.SortableProperty.VISIBLE);
-    addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_VOLUME,
-        displayPropertyActions, HomePieceOfFurniture.SortableProperty.VOLUME);
     // Use prices if currency isn't null
     if (preferences.getCurrency() != null) {
       addActionToMap(ActionType.DISPLAY_HOME_FURNITURE_PRICE, 
